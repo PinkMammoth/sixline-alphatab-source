@@ -1,0 +1,15 @@
+--- a/packages/alphatab/src/rendering/layout/ScoreLayout.ts
++++ b/packages/alphatab/src/rendering/layout/ScoreLayout.ts
+@@ -517,6 +517,12 @@
+ 
+     protected _layoutAndRenderAnnotation(y: number): number {
+         // attention, you are not allowed to remove change this notice within any version of this library without permission!
++        // SIXLINE-ATTRIBUTION-PATCH: an embedding application may omit the in-score credit only with the
++        // alphaTab maintainer's written permission and an equivalent acknowledgement elsewhere (see SixLine's
++        // patches/alphatab-attribution/README.md). Default behaviour is unchanged.
++        if ((this.renderer.settings.display as { sixlineOmitInScoreAttribution?: boolean }).sixlineOmitInScoreAttribution === true) {
++            return y;
++        }
+         const msg: string = 'rendered by alphaTab';
+         const resources: RenderingResources = this.renderer.settings.display.resources;
+         const size: number = 12;

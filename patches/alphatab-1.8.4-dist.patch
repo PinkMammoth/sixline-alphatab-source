@@ -1,0 +1,13 @@
+--- a/dist/alphaTab.core.mjs
++++ b/dist/alphaTab.core.mjs
+@@ -57895,6 +57895,10 @@
+ 		}
+ 	}
+ 	_layoutAndRenderAnnotation(y) {
++		// SIXLINE-ATTRIBUTION-PATCH: an embedding application may omit the in-score credit only with the
++		// alphaTab maintainer's written permission and an equivalent acknowledgement elsewhere (see SixLine's
++		// patches/alphatab-attribution/README.md). Default behaviour is unchanged.
++		if (this.renderer.settings.display.sixlineOmitInScoreAttribution === true) return y;
+ 		const msg = "rendered by alphaTab";
+ 		const resources = this.renderer.settings.display.resources;
+ 		const size = 12;
